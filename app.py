@@ -82,7 +82,7 @@ with st.expander("So funktioniert Multilevel", expanded=True):
 Ebene l löst den Prozess dS = a S dt + σ S dW mit 2^l Zeitschritten; P_l ist die Ausgabe (Endbestand, Fehlbestand oder Fehlmenge). Gesucht ist E[P_∞] (hier exakt bekannt, die Schätzer kennen es nicht).
 
 1. **Gewöhnlich:** wähle die Ebene L so fein, dass die Verzerrung ≈ c·2^(−L) unter ε/√2 liegt, und ziehe N ≈ 2 Var(P_L)/ε² Bahnen. Die Kosten wachsen wie ε⁻² (Bahnen) mal ε⁻¹ (Schritte je Bahn).
-2. **Multilevel:** E[P_L] = E[P_0] + Σ_l E[P_l − P_(l−1)]. Jede Differenz Y_l wird aus **eigenen** Bahnen geschätzt, bei denen die grobe Bahn die **summierten Zuwächse** der feinen benutzt. Fällt die Varianz V_l = Var(Y_l) mit 2^(−βl) schneller, als die Kosten je Bahn mit 2^l wachsen (β > γ = 1), sättigt ε²·Kosten.
+2. **Multilevel:** E[P_L] = E[P_0] + Σ_l E[P_l − P_(l−1)]. Jede Differenz Y_l wird aus **eigenen** Bahnen geschätzt, bei denen die grobe Bahn die **summierten Zuwächse** der feinen benutzt. Fällt die Varianz V_l = Var(Y_l) mit 2^(−βl) schneller, als die Kosten je Bahn mit 2^l wachsen (β > γ = 1), steigt ε²·Kosten nur noch mild (im Grenzfall bleibt es beschränkt).
    Optimal sind N_l ∝ √(V_l/C_l) Bahnen auf Ebene l (C_l = 2^l + 2^(l−1) Schritte).
 3. **Zwei Ebenen** (wie Stück 4): eine billige Ebene k und eine feine L, nur die eine Differenz P_L − P_k.
 4. **Entzerrt** (Ein-Term): ziehe eine zufällige Ebene L mit Wahrscheinlichkeit p_l und schätze Y_L / p_L; kein Abbruchfehler, aber nur sinnvoll, wenn V_l schneller als p_l fällt und die Kosten langsamer als 1/p_l wachsen.
@@ -239,7 +239,7 @@ st.markdown(
 |---|---|---|
 | **Die grobe Bahn benutzt dieselben Zuwächse** | Ohne Kopplung bleibt V_l auf dem Niveau der Varianz der Ausgabe; Multilevel wird um ein Vielfaches teurer als gewöhnliches Monte Carlo (Experiment 1, Kostenrechnung). | Stück 2 |
 | **Die Differenz wird schneller klein, als die Bahn teurer wird (β > γ)** | Bei Euler gilt β = γ = 1: ε²·Kosten wächst weiter, der Vorteil bleibt bei einem kleinen Faktor (Experiment 2). | – |
-| **Die Ausgabe ist glatt** | Bei einem Sprung halbiert sich die Rate: Euler mit Sprung kostet im Idealfall mehr als gewöhnliches Monte Carlo (Preset »Sprung mit Euler«). | – |
+| **Die Ausgabe ist glatt** | Bei einem Sprung sinkt die Rate (Euler: auf 0,46, Milstein: auf 0,79): Euler mit Sprung kostet bei Toleranzen bis 0,0025 im Idealfall mehr als gewöhnliches Monte Carlo (Preset »Sprung mit Euler«). | – |
 | **Die Toleranz ist eng** | Bei lockerem ε kostet der Pilot mehr, als er spart (Experiment 3, Preset »Lockere Toleranz«). | – |
 | **Eine Kette über viele Ebenen ist nötig** | Ein Zwei-Ebenen-Schätzer holt bei Euler fast alles, beim Sprung mehr als Multilevel (Experiment 4). | Stück 4 |
 | **Der Abbruchfehler stört** | Der entzerrte Schätzer verzichtet auf die Ebenenwahl, braucht dafür β > γ; bei Euler wächst seine Varianz mit der Abschneideebene (Experiment 5). | – |
@@ -256,7 +256,7 @@ Kosten zählen Zeitschritte, nicht Laufzeit.
 **Grenzen.** Es gibt nur drei Ausgaben des Endwerts, keine pfadabhängigen (asiatisch, Barriere, Lookback), nur die Verfeinerung um den Faktor 2, kein Quasi-Monte-Carlo im Multilevel und keine adaptiven Zeitschritte. Giles' Verfahren läuft mit fest angesetzter schwacher Ordnung 1; die Rate β wird für die Kostenrechnung aus den Ebenen ab 3 geschätzt.
 **Gewöhnliches Monte Carlo ist mit Orakelwissen gerechnet** (es kennt Verzerrung und Varianz) und wird dadurch begünstigt.
 
-**Bekannte Probleme und Unsicherheiten.** Die Ebenenvarianz bei Sprung und Milstein beruht auf seltenen Ereignissen und ist mit 50.000 Bahnen je Ebene nur grob messbar (hohe Kurtosis); sie zeigt sich erst mit Millionen Bahnen sauber. Die Verzerrungskonstante wird aus den gemessenen Ebenenmitteln geschätzt und rauscht.
+**Bekannte Probleme und Unsicherheiten.** Die Ebenenvarianz bei Sprung und Milstein beruht auf seltenen Ereignissen und ist mit 50.000 Bahnen je Ebene nur grob messbar (hohe Kurtosis); mit Millionen Bahnen liegen die letzten Ebenenschritte bei etwa 0,9. Die Verzerrungskonstante wird aus den gemessenen Ebenenmitteln geschätzt und rauscht.
 Bei großem σ gilt die Rate erst ab einer tieferen Ebene; die Fortsetzung jenseits der gemessenen Ebenen ist dort unsicher. Die Ein-Term-Varianzen stammen aus den gemessenen zweiten Momenten; der Lauf in Experiment 5 prüft sie an einem Fall. Der Kostensatz und Giles' Verfahren stehen im Mathematik-Expander aus dem Gedächtnis;
 die Quellen (Giles 2015, Rhee und Glynn) sind nur im Abstract eingesehen. Die Oberfläche ist mit AppTest geprüft und im Browser angesehen, nicht mit echtem Mausklick auf jedem Gerät.
         """

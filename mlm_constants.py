@@ -39,7 +39,7 @@ PRESETS = {
 }
 PRESET_HELP = {
     "Standardfall (Voreinstellung)": "Euler–Maruyama, Fehlbestand (S(T) − q)⁺, σ = 0,5, Toleranz 0,005: Multilevel ist etwas billiger als gewöhnliches Monte Carlo, aber nicht viel (Rate β = 1 gleich Kostenrate γ = 1).",
-    "Milstein: die Kette zahlt sich aus": "Mit Milstein fällt die Ebenenvarianz mit 2^(−2l): der Multilevel-Schätzer ist bei Toleranz 0,0025 um ein Vielfaches billiger, und bei engerer Toleranz sättigt ε²·Kosten.",
+    "Milstein: die Kette zahlt sich aus": "Mit Milstein fällt die Ebenenvarianz mit 2^(−2l): der Multilevel-Schätzer ist bei Toleranz 0,0025 um ein Vielfaches billiger, und bei engerer Toleranz steigt ε²·Kosten nur noch mild.",
     "Sprung mit Euler: Multilevel verliert": "Bei der Fehlmengenwahrscheinlichkeit und Euler fällt die Ebenenvarianz nur mit 2^(−l/2): Multilevel ist im Idealfall nicht billiger als gewöhnliches Monte Carlo, ein Zwei-Ebenen-Schätzer schon.",
     "Große Streuung: grobe Ebenen taugen nicht": "Mit σ = 1,0 steigt die Ebenenvarianz auf den gröbsten Ebenen erst, bevor sie fällt: die Rate gilt erst ab einer tieferen Ebene.",
     "Lockere Toleranz": "Bei Toleranz 0,04 kostet schon der Pilot von Giles' Verfahren (3 Ebenen mal 1000 Bahnen) mehr als gewöhnliches Monte Carlo insgesamt.",
