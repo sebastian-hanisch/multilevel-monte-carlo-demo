@@ -1,7 +1,6 @@
 # Multilevel Monte Carlo: wann sich die Ebenen lohnen – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-multilevel-monte-carlo-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-multilevel-monte-carlo-demo.streamlit.app/)**
 
 Zwölftes Stück der Linie **„Monte-Carlo-Schätzung und Varianzreduktion“** in der „Konzepte“-Reihe für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (die Linie wird erst vollständig veröffentlicht). Nachfolger von [monte-carlo-gradient-demo](https://github.com/sebastian-hanisch/monte-carlo-gradient-demo) (Stück 11, Gradienten schätzen): Hier geht es um einen Erwartungswert, den man nur **diskretisiert** lösen kann, und um die Frage, wann der **Multilevel-Schätzer** gegenüber gewöhnlichem Monte Carlo Kosten spart. Vehikel ist die log-normale Nachfrage aus Stück 11 als **Bestandsprozess** mit drei Ausgaben in drei Glattheitsstufen (Endbestand, Fehlbestand, Fehlmengenwahrscheinlichkeit); die exakte Lösung dient nur als Orakel.
 
@@ -128,4 +127,4 @@ Gebaut mit Streamlit, Plotly, NumPy und fpdf2.
 
 ---
 
-Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zu den Demos: [Interaktive Demos](https://sebastianhanisch.net/demos.html).
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Monte-Carlo-Schätzung: vom Schätzer zur Wahl](https://sebastianhanisch.net/konzepte-monte-carlo.html).
